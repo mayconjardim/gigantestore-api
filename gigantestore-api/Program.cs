@@ -1,4 +1,7 @@
 
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace gigantestore_api
 {
     public class Program
@@ -13,6 +16,11 @@ namespace gigantestore_api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
+            builder.Services.AddDbContext<DataContext>(DbContextOptions =>
+		    DbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
