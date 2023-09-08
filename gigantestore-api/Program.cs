@@ -19,7 +19,7 @@ namespace gigantestore_api
 
 
             builder.Services.AddDbContext<DataContext>(DbContextOptions =>
-		    DbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
+            DbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
             var app = builder.Build();
 
