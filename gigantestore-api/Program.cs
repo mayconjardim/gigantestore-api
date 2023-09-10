@@ -1,4 +1,5 @@
 
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,8 @@ namespace gigantestore_api
 
             builder.Services.AddDbContext<DataContext>(DbContextOptions =>
             DbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
+
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
             var app = builder.Build();
 
